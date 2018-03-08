@@ -11,13 +11,13 @@ import (
 
 	"golang.org/x/net/context"
 
-	pb "github.com/EwanValentine/shippy-consignment-service/proto/consignment"
-	userService "github.com/EwanValentine/shippy-user-service/proto/auth"
-	vesselProto "github.com/EwanValentine/shippy-vessel-service/proto/vessel"
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/metadata"
 	"github.com/micro/go-micro/server"
+	pb "github.com/uhdang/mig-consignment-service/proto/consignment"
+	userService "github.com/uhdang/mig-user-service/proto/auth"
+	vesselProto "github.com/uhdang/mig-vessel-service/proto/vessel"
 )
 
 const (
@@ -50,7 +50,7 @@ func main() {
 	srv := micro.NewService(
 
 		// This name must match the package name given in your protobuf definition
-		micro.Name("shippy.consignment"),
+		micro.Name("mig.consignment"),
 		micro.Version("latest"),
 		micro.WrapHandler(AuthWrapper),
 	)

@@ -1,7 +1,7 @@
 package main
 
 import (
-	pb "github.com/EwanValentine/shippy-consignment-service/proto/consignment"
+	pb "github.com/uhdang/mig-consignment-service/proto/consignment"
 	"gopkg.in/mgo.v2"
 )
 

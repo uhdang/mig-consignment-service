@@ -1,12 +1,16 @@
 build:
 	protoc -I. --go_out=plugins=micro:. \
 		proto/consignment/consignment.proto
-	docker build -t consignment-service .
+	docker build -t mig-consignment-service .
 
 run:
 	docker run -d --net="host" \
+		--name mig-consignment-service \
 		-p 50052 \
 		-e MICRO_SERVER_ADDRESS=:50052 \
 		-e MICRO_REGISTRY=mdns \
 		-e DISABLE_AUTH=true \
-		consignment-service
+		mig-consignment-service
+
+createconsignment:
+	curl -XPOST -H 'Content-Type: application/json' -d '{ "service": "mig.consignment", "method": "ConsignmentService.Create", "request": { "description": "This is a test", "weight": "500", "containers": [] }}' --url http://localhost:8080/rpc
