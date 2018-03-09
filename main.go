@@ -55,7 +55,7 @@ func main() {
 		micro.WrapHandler(AuthWrapper),
 	)
 
-	vesselClient := vesselProto.NewVesselServiceClient("shippy.vessel", srv.Client())
+	vesselClient := vesselProto.NewVesselServiceClient("mig.vessel", srv.Client())
 
 	// Init will parse the command line flags.
 	srv.Init()
@@ -90,7 +90,7 @@ func AuthWrapper(fn server.HandlerFunc) server.HandlerFunc {
 		log.Println("Authenticating with token: ", token)
 
 		// Auth here
-		authClient := userService.NewAuthClient("shippy.user", client.DefaultClient)
+		authClient := userService.NewAuthClient("mig.user", client.DefaultClient)
 		_, err := authClient.ValidateToken(ctx, &userService.Token{
 			Token: token,
 		})
