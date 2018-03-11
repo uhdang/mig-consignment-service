@@ -16,4 +16,4 @@ runmongodb:
 	docker run -d -p 27017:27017 --name mig-mongodb mongo
 
 createconsignment:
-	curl -XPOST -H 'Content-Type: application/json' -d '{ "service": "mig.consignment", "method": "ConsignmentService.Create", "request": { "description": "This is a test", "weight": "500", "containers": [] }}' --url http://localhost:8080/rpc
+	curl -XPOST -H 'Content-Type: application/json' -d '{ "service": "mig.consignment", "method": "ConsignmentService.Create", "request": { "description": "This is a test", "weight": 500, "containers": [] }}' --url http://localhost:8080/rpc
